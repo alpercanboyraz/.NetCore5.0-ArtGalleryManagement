@@ -1,0 +1,69 @@
+﻿@model IEnumerable<mvcproject.Models.ArtWork>
+@{ 
+    ViewBag.Title = "Product List";
+}
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <!--
+    <th>
+        @@Html.DisplayNameFor(model => model.art_id)
+    </th>-->
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.file_location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_explanation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr><!--
+            <td>
+                @@Html.DisplayFor(modelItem => item.art_id)
+            </td>-->
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category_id)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price) TL
+            </td>
+            <td>
+                <img class="card-img-top" style="width:130px;height:130px;" src="@item.file_location" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_explanation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.art_id }) |
+                <!--@@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |-->
+                @Html.ActionLink("Delete", "Delete",new { id = item.art_id}, new { onclick = "return confirm('Are you sure want to delete ?')" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

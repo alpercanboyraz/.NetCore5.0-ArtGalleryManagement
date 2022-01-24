@@ -1,0 +1,39 @@
+﻿@model mvcproject.Models.ArtWork
+
+<div class="row justify-content-center">
+    <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+        <div class="card border-0 shadow">
+            <img src="@Model.file_location" />
+            @foreach (var users in Model.Users)
+            {
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0">@users.name @users.surname @users.age</h3>
+                        <span class="text-primary">Artist</span>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+
+                        <li class="mb-3"><i class="far fa-envelope display-25 me-3 text-secondary"></i>  @users.email</li>
+                        <li class="mb-3"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>  @users.phone_number</li>
+                        <li><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>  @users.street @users.city @users.country</li>
+
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="ps-lg-1-6 ps-xl-5">
+            <div class="mb-5 wow fadeIn">
+                <div class="text-start mb-1-6 wow fadeIn">
+                    <h2 class="h1 mb-0" style="color: #566573" >Product Explanation</h2>
+                </div>
+                <p>@Model.product_explanation</p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

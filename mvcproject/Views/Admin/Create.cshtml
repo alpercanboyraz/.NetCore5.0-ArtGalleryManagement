@@ -1,0 +1,78 @@
+﻿@model mvcproject.Models.ArtWork
+<h4>ArtWork</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label col-md-2"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category_id" class="control-label col-md-2"></label>
+                <!--<input asp-for="category_id" class="form-control" /> -->
+
+                
+
+                
+    @Html.DropDownList("category_id",
+      new List<SelectListItem> {
+          new SelectListItem {
+             Text="Painting",
+             Value="1",
+
+          },
+          new SelectListItem {
+             Text="Sculpture",
+             Value="2",
+
+          },
+          new SelectListItem {
+             Text="Music",
+             Value="3",
+
+          },
+
+      }, "Choose Category", new { @class = "form-control" }) 
+
+                <span asp-validation-for="category_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label col-md-2"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="file_location" class="control-label col-md-2"></label>
+                <input asp-for="file_location" class="form-control" />
+                <span asp-validation-for="file_location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label col-md-2"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_explanation" class="control-label col-md-2"></label>
+                <input asp-for="product_explanation" class="form-control" />
+                <span asp-validation-for="product_explanation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3>@ViewBag.Message</h3>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
